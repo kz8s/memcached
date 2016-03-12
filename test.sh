@@ -1,4 +1,4 @@
-#!/bin/bash -eu
+#!/bin/bash -u
 
 NAME=memcached
 
@@ -18,4 +18,5 @@ echo "✓ Docker Host IP: $DOCKER_IP"
 docker run --detach --publish 21211:11211 --name ${NAME} kz8s/memcached; sleep 10
 (echo -e 'stats\nquit'; sleep 1) | nc ${DOCKER_IP} 21211
 
-docker kill ${NAME} && docker rm ${NAME}
+docker kill ${NAME} ||:
+docker rm ${NAME} ||:
