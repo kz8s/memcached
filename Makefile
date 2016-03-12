@@ -3,7 +3,7 @@ TAG := latest
 
 all: build test
 
-build: ; @docker build --tag ${NAME}:${TAG} .
+build: ; @docker build --no-cache --tag ${NAME}:${TAG} .
 
 clean: ; @docker rmi --force ${NAME}:${TAG}
 
