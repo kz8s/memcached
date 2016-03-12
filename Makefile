@@ -9,6 +9,6 @@ clean: ; @docker rmi --force ${NAME}:${TAG}
 
 test:
 	@docker run ${NAME}:${TAG} memcached -h | grep "^memcached"
-	./test.sh
+	@./test-docker.sh
 
 .PHONY: all build clean test
