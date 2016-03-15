@@ -1,14 +1,12 @@
 machine:
   services:
     - docker
+
 dependencies:
-  cache_directories:
-    - ~/kubernetes
-  pre:
-    - ./ensure-kubernetes-installed.sh
   override:
     - docker info
     - make build
+    
 test:
   override:
     - make test
